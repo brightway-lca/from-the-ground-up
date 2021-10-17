@@ -38,3 +38,13 @@ You can download (and then unzip) this repository, or use `git` to clone it; in 
 
 Once you are in the directory, with the `bw25` environment active, you can run `jupyter-lab`, and go through the notebooks in numerical order.
 
+## Basic Python knowledge
+
+In order for these notebooks to be an enjoyable and productive experience, you will need to have mastered the basics of programming in Python. NO need to be an expert, but you should at least know the following:
+
+* What is a variable, and how to define, use, and change its value
+* What are lists, tuples, sets, and dicts
+* List comprehensions
+* How to define and use functions, including the use of `*args` and `**kwargs`
+
+In addition, you should read (and play with the executable notebooks) in [the Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/02.00-introduction-to-numpy.html). If you have time, I also recommend reading the chapters from that book on Pandas and Matplotlib.
