@@ -1,6 +1,6 @@
 # from-the-ground-up
 
-Teaching material for Brightway2.5, starting from the foundations. A different approach from the existing teaching material which describes *how* Brightway works, with a focus on *why* Brightway does what it does.
+Teaching material for Brightway2.5, starting from the foundations. A different approach from the existing teaching material which describes *how* Bightway works, with a focus on *why* Brightway does what it does.
 
 ## Installation
 
@@ -31,6 +31,16 @@ Type `ipython` to enter the shell. Then run:
     import bw2data; bw2data.__version__
 
 You should get `(4, 0, 'DEVX')`, where X is a number higher than 5.
+
+## Restarting the next day
+
+1. Open a terminal window ( on Windows, `Anaconda Prompt (miniconda3)`)
+
+2. Change to your notebook directory using cd, e.g. `cd Downloads/from-the-ground-up-main/`
+
+3. Change to your environment, e.g. `conda activate bw25`
+
+4. Run `jupyter-lab`
 
 ## Using the notebooks
 
