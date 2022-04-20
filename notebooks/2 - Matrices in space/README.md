@@ -1,0 +1,1 @@
+Theory of regionalisation in life cycle assessment. How to incorporate spatial data in matrices at different levels of resolution. Using uncertain data in matrix systems. Application to case study system.

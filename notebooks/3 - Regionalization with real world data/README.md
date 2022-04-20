@@ -1,0 +1,1 @@
+How to regionalize inventory datasets given available data, and with the inclusion of additional data. Using MRIO tables to disaggregate background databases. Handling "Rest-of-World" locations. How to import and use regionalized impact assessment methods.

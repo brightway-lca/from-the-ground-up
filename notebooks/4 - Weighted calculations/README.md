@@ -1,0 +1,1 @@
+How to use detailed raster maps of specific flows in GIS to make weighted calculations of site-specific characterization factors. Dispatching calculations to the cloud. Interpretation of results. Introduction of case study and beginning of case study work.
