@@ -38,7 +38,7 @@ jobs:
           conda list
       - name: install base dependencies and testing dependencies
         run: conda install -q --file requirements.txt --file requirements-test.txt
-      - name: collect tests
+      - name: collect the tests
         run: pytest --collect-only --nbmake *ipynb
       - name: run the tests
         run: pytest --nbmake *ipynb
