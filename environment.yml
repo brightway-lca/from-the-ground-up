@@ -1,4 +1,4 @@
-name: cond_environment_actions_workflow
+name: conda_environment_actions_workflow
 channels:
   - conda-forge
   - nodefaults

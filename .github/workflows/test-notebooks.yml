@@ -22,20 +22,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3 # https://github.com/actions/checkout/releases
       - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
-        with:
+        with: # https://github.com/marketplace/actions/setup-miniconda
           auto-update-conda: true
           environment-file: environment.yml
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
       - name: Conda information
         run: |
           conda config --show-sources
           conda config --show
           conda info
           conda list
-      - name: Install pytest environment
-        run: conda create -q --file environment_pytest.yml
-      - name: Install notebook execution environment
-        run: conda install -q --file environment_execution.yml
       - name: Collect tests
-        run: pytest --collect-only --nbmake *ipynb --nbmake-kernel=environment_execution
+        run: pytest --collect-only --nbmake *ipynb
       - name: Run tests
-        run: pytest --nbmake *ipynb
+        run: pytest --nbmake --nbmake-kernel=conda_environment_actions_workflow *ipynb 
