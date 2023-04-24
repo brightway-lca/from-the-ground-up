@@ -9,7 +9,7 @@ on:
 
 jobs:
   test-run-notebooks:
-    name: test (${{ matrix.python-version }}, ${{ matrix.os }})
+    name: Test (${{ matrix.python-version }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -33,6 +33,9 @@ jobs:
           conda config --show
           conda info
           conda list
+      - name: Install Jupyter kernel from Conda environment
+        run: |
+          python -m ipykernel install --user --name conda_environment_actions_workflow
       - name: Collect tests
         run: pytest --collect-only --nbmake *ipynb
       - name: Run tests
