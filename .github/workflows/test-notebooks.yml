@@ -1,15 +1,11 @@
-name: test notebooks
+name: Test Jupyter Notebooks
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
+  push: # trigger the workflow on push or pull request events
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  workflow_dispatch: # run the workflow manually from the Actions tab (https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch)
 
 jobs:
   test-run-notebooks:
@@ -19,27 +15,28 @@ jobs:
       run:
         shell: bash -l {0}
     strategy:
-      fail-fast: false
-      matrix:
+      fail-fast: false # don't stop all jobs if one fails (https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#handling-failures)
+      matrix: # combinatorial job creation based on multiple parameters (https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.11"]
     steps:
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v3 # https://github.com/actions/checkout/releases
+      - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
         with:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
-          channels: conda-forge,cmutel
-      - name: Conda info        
-        run: |        
+          channels: conda-forge, cmutel
+      - name: Conda info
+        run: |
           conda config --show-sources
           conda config --show
           conda info
           conda list
-      - name: install base dependencies and testing dependencies
-        run: conda install -q --file requirements.txt --file requirements-test.txt
+      - name: install testing environment
+        run: conda install -q --file environment_testing.yml
+      - name: install notebook execution environment
+        run: conda install -q --file environment_execution.yml
       - name: collect the tests
-        run: pytest --collect-only --nbmake *ipynb
+        run: pytest --collect-only --nbmake *ipynb --nbmake-kernel=environment_execution
       - name: run the tests
         run: pytest --nbmake *ipynb
-        

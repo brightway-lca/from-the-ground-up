@@ -1,0 +1,16 @@
+name: environment_execution
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  # core functionality
+  - python=3.11
+  - ipython
+  # data science
+  - numpy
+  - pandas
+  - scipy
+  # plotting
+  - seaborn
+  # brightway
+  - cmutel::brightway25

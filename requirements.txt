@@ -1,2 +1,0 @@
-brightway25
-seaborn
