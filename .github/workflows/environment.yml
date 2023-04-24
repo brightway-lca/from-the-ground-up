@@ -1,0 +1,18 @@
+name: conda_environment_actions_workflow
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  # core functionality
+  - python=3.11
+  # jupyter
+  - jupyter
+  - nbmake
+  # data science
+  - numpy
+  - pandas
+  - scipy
+  # plotting
+  - seaborn
+  # brightway
+  - cmutel::brightway25

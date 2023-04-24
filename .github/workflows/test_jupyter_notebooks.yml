@@ -1,0 +1,42 @@
+name: Test Jupyter Notebooks
+
+on:
+  push: # trigger the workflow on push or pull request events
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch: # run the workflow manually from the Actions tab (https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch)
+
+jobs:
+  test-run-notebooks:
+    name: Test (${{ matrix.python-version }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      fail-fast: false # don't stop all jobs if one fails (https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#handling-failures)
+      matrix: # combinatorial job creation based on multiple parameters (https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs)
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v3 # https://github.com/actions/checkout/releases
+      - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
+        with: # https://github.com/marketplace/actions/setup-miniconda
+          auto-update-conda: true
+          environment-file: .github/environment.yml
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+      - name: Display Conda information
+        run: |
+          conda config --show-sources
+          conda config --show
+          conda info
+          conda list
+      - name: Install Jupyter kernel from Conda environment # https://github.com/treebeardtech/nbmake#add-missing-jupyter-kernel-to-your-ci-environment
+        run: |
+          python -m ipykernel install --user --name conda_environment_actions_workflow
+      - name: Collect tests
+        run: pytest --collect-only --nbmake *ipynb
+      - name: Run tests
+        run: pytest --nbmake --nbmake-kernel=conda_environment_actions_workflow *ipynb 
