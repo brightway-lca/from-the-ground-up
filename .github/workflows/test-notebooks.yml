@@ -24,16 +24,15 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
         with:
           auto-update-conda: true
-          python-version: ${{ matrix.python-version }}
-          channels: conda-forge, cmutel
-      - name: Conda info
+          environment-file: environment.yml
+      - name: Conda information
         run: |
           conda config --show-sources
           conda config --show
           conda info
           conda list
       - name: Install pytest environment
-        run: conda install -q --file environment_pytest.yml
+        run: conda create -q --file environment_pytest.yml
       - name: Install notebook execution environment
         run: conda install -q --file environment_execution.yml
       - name: Collect tests

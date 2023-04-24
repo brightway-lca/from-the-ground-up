@@ -1,11 +1,13 @@
-name: environment_execution
+name: cond_environment_actions_workflow
 channels:
   - conda-forge
   - nodefaults
 dependencies:
   # core functionality
   - python=3.11
-  - ipython
+  # jupyter
+  - jupyter
+  - nbmake
   # data science
   - numpy
   - pandas
