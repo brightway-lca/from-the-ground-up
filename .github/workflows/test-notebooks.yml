@@ -32,11 +32,11 @@ jobs:
           conda config --show
           conda info
           conda list
-      - name: install testing environment
-        run: conda install -q --file environment_testing.yml
-      - name: install notebook execution environment
+      - name: Install pytest environment
+        run: conda install -q --file environment_pytest.yml
+      - name: Install notebook execution environment
         run: conda install -q --file environment_execution.yml
-      - name: collect the tests
+      - name: Collect tests
         run: pytest --collect-only --nbmake *ipynb --nbmake-kernel=environment_execution
-      - name: run the tests
+      - name: Run tests
         run: pytest --nbmake *ipynb
