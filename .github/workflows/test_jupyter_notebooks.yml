@@ -24,16 +24,16 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
         with: # https://github.com/marketplace/actions/setup-miniconda
           auto-update-conda: true
-          environment-file: environment.yml
+          environment-file: .github/environment.yml
           miniforge-variant: Mambaforge
           miniforge-version: latest
-      - name: Conda information
+      - name: Display Conda information
         run: |
           conda config --show-sources
           conda config --show
           conda info
           conda list
-      - name: Install Jupyter kernel from Conda environment
+      - name: Install Jupyter kernel from Conda environment # https://github.com/treebeardtech/nbmake#add-missing-jupyter-kernel-to-your-ci-environment
         run: |
           python -m ipykernel install --user --name conda_environment_actions_workflow
       - name: Collect tests
