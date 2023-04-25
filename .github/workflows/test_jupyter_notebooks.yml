@@ -39,4 +39,4 @@ jobs:
       - name: Collect tests
         run: pytest --collect-only --nbmake *ipynb
       - name: Run tests
-        run: pytest --nbmake --nbmake-kernel=conda_environment_actions_workflow *ipynb 
+        run: pytest --nbmake --nbmake-kernel=conda_environment_actions_workflow *ipynb
