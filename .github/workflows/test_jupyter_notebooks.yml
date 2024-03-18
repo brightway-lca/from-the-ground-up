@@ -20,11 +20,11 @@ jobs:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
         python-version: ["3.11"]
     steps:
-      - uses: actions/checkout@v3 # https://github.com/actions/checkout/releases
-      - uses: conda-incubator/setup-miniconda@v2 # https://github.com/conda-incubator/setup-miniconda/releases
+      - uses: actions/checkout@v4 # https://github.com/actions/checkout/releases
+      - uses: conda-incubator/setup-miniconda@v3 # https://github.com/conda-incubator/setup-miniconda/releases
         with: # https://github.com/marketplace/actions/setup-miniconda
           auto-update-conda: true
-          environment-file: .github/environment.yml
+          environment-file: .github/workflows/environment.yml
           miniforge-variant: Mambaforge
           miniforge-version: latest
       - name: Display Conda information
