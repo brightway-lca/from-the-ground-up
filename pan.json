@@ -1,0 +1,29 @@
+[
+  {
+    "a": "1 kg of finished carbon fiber Toray T700 G. Carbon fiber manufacturing. Source: based on Ellringmann et al. (2016), Gill et al. (2016), M\u00fctzel (2012).",
+    "b": "RER",
+    "c": "polyacrylonitrile",
+    "d": "kg",
+    "e": "polyacrylonitrile production (PAN) by polymerisation",
+    "f": [
+      [
+        "polyacrylonitrile production (PAN) by polymerisation",
+        1,
+        "RER",
+        "kg"
+      ],
+      [
+        "market for heat, from steam, in chemical industry",
+        49.7,
+        "RER",
+        "MJ"
+      ],
+      [
+        "market for acrylonitrile",
+        1.12,
+        "GLO",
+        "kg"
+      ]
+    ]
+  }
+]
